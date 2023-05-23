@@ -1,0 +1,19 @@
+---
+- name: Create File with Content
+  hosts: all
+  vars:
+    file_path: /home/vagrant/file.txt
+    file_content: Hello Liran
+
+  tasks:
+    - name: Create directory for the file
+      file:
+        path: "{{ file_path | dirname }}"
+        state: directory
+        mode: '0755'
+
+    - name: Create file with content
+      blockinfile:
+        path: "{{ file_path }}"
+        block: |
+          {{ file_content }}
