@@ -2,7 +2,7 @@
 - name: Create File with Content
   hosts: all
   vars:
-    file_path: /home/vagrant/file.txt
+    file_path: /home/vagrant
     file_content: Hello Liran
 
   tasks:
