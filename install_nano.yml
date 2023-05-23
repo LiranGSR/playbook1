@@ -1,0 +1,15 @@
+---
+- name: Check and Install Nano Editor
+  hosts: all
+  tasks:
+    - name: Check if Nano is installed
+      command: which nano
+      register: nano_check
+      changed_when: false
+      failed_when: false
+
+    - name: Install Nano if not found
+      apt:
+        name: nano
+        state: present
+      when: nano_check.rc != 0
